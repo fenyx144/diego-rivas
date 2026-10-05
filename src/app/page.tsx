@@ -185,7 +185,7 @@ function Hero() {
       <div className="reveal-hero grid gap-10 pb-16 sm:pb-24 md:grid-cols-12 md:gap-8">
         <div className="md:col-span-8">
           <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-paper/60">
-            Diego Rivas Revilla · Arequipa, Perú · remoto
+            Arequipa, Perú · Trabajo remoto para todo el mundo
           </p>
           <h1
             className="hero-title mt-5 max-w-[22ch] font-serif text-[2.45rem] leading-[1.08] tracking-tight text-paper sm:text-[3.4rem]"
@@ -211,8 +211,7 @@ function Hero() {
           <div className="border-l-2 border-accent pl-4">
             <p className="font-mono text-[0.7rem] uppercase tracking-wider text-paper/60">Ahora</p>
             <p className="mt-2 leading-snug text-paper/90">
-              Abierto a proyectos freelance. Trabajo desde Arequipa, en remoto, con horario que
-              encaja con Europa.
+              Abierto a proyectos freelance. Trabajo remoto para clientes de cualquier país.
             </p>
           </div>
           <a
@@ -452,8 +451,7 @@ function SobreMi() {
           </p>
           <p className="text-muted">
             Prefiero proyectos cercanos al cliente: entender el proceso de verdad, proponer algo
-            concreto y estar disponible cuando hace falta. Mis mañanas en Perú son las tardes en
-            Europa, así que hay varias horas en común para hablar y revisar.
+            concreto y estar disponible cuando hace falta, sin importar dónde esté tu equipo.
           </p>
         </div>
       </Reveal>
@@ -519,7 +517,7 @@ function Pie() {
     <footer className="border-t border-line bg-paper">
       <div className="mx-auto flex max-w-[1120px] flex-wrap items-center justify-between gap-3 px-5 py-6 font-mono text-[0.7rem] text-muted sm:px-8">
         <span>Diego Rivas Revilla · Arequipa, Perú</span>
-        <span>Remoto · horario compatible con Europa</span>
+        <span>Trabajo remoto para todo el mundo</span>
       </div>
     </footer>
   );
