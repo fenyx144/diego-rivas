@@ -66,12 +66,12 @@ const PROYECTOS: Proyecto[] = [
       "Grilla de horarios por profesor, registro y cálculo de pagos a profesores, y gestión de cursos y docentes. Uso interno, sin enlace público.",
     stack: ["PHP", "MySQL", "JavaScript"],
     capturas: [
-      { src: "/proyectos/academia/landing.webp", alt: "Página de inicio de la academia" },
       { src: "/proyectos/academia/horarios.webp", alt: "Grilla de horarios por profesor" },
       { src: "/proyectos/academia/pagos.webp", alt: "Pagos a profesores" },
       { src: "/proyectos/academia/cursos.webp", alt: "Gestión de cursos" },
       { src: "/proyectos/academia/profesores.webp", alt: "Gestión de profesores" },
-      { src: "/proyectos/academia/landing-seccion.webp", alt: "Sección de la página de inicio" },
+      { src: "/proyectos/academia/landing.webp", alt: "Página pública de la academia" },
+      { src: "/proyectos/academia/landing-seccion.webp", alt: "Sección de la página pública" },
     ],
   },
 ];
