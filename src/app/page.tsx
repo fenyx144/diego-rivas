@@ -2,6 +2,7 @@
  * Página personal de Diego Rivas Revilla.
  * Contenido estático: presentación, servicios, método, proyectos, stack y contacto.
  */
+import { Fragment, type CSSProperties } from "react";
 import Reveal from "@/components/Reveal";
 
 type Captura = { src: string; alt: string };
@@ -131,6 +132,13 @@ const STACK = [
 
 const WHATSAPP = "https://wa.me/51955140263";
 
+// Titular dividido en palabras para la entrada escalonada.
+const TITULAR = [
+  ..."Desarrollo software que automatiza y simplifica la operación de".split(" ").map((t) => ({ t, acento: false })),
+  { t: "tu", acento: true },
+  { t: "negocio.", acento: true },
+];
+
 export default function Inicio() {
   return (
     <>
@@ -171,15 +179,27 @@ function Cabecera() {
 
 function Hero() {
   return (
-    <section className="bg-ink text-paper">
-      <div className="mx-auto max-w-[1120px] px-5 pt-14 sm:px-8 sm:pt-20">
+    <section className="relative isolate overflow-hidden bg-ink text-paper">
+      <FondoHero />
+      <div className="relative mx-auto max-w-[1120px] px-5 pt-14 sm:px-8 sm:pt-20">
       <div className="reveal-hero grid gap-10 pb-16 sm:pb-24 md:grid-cols-12 md:gap-8">
         <div className="md:col-span-8">
           <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-paper/60">
             Diego Rivas Revilla · Arequipa, Perú · remoto
           </p>
-          <h1 className="mt-5 max-w-[22ch] font-serif text-[2.45rem] leading-[1.08] tracking-tight text-paper sm:text-[3.4rem]">
-            Desarrollo software que automatiza y simplifica la operación de <span className="text-accent">tu negocio</span>.
+          <h1
+            className="hero-title mt-5 max-w-[22ch] font-serif text-[2.45rem] leading-[1.08] tracking-tight text-paper sm:text-[3.4rem]"
+            aria-label="Desarrollo software que automatiza y simplifica la operación de tu negocio."
+          >
+            {TITULAR.map((w, i) => (
+              <Fragment key={i}>
+                <span aria-hidden className="word-wrap">
+                  <span className={`word ${w.acento ? "text-accent" : ""}`} style={{ "--i": i } as CSSProperties}>
+                    {w.t}
+                  </span>
+                </span>{" "}
+              </Fragment>
+            ))}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-paper/60 sm:text-xl">
             Construyo aplicaciones web, apps móviles con Flutter y automatizaciones con IA.
@@ -197,15 +217,44 @@ function Hero() {
           </div>
           <a
             href="#contacto"
-            className="inline-flex w-fit items-center gap-2 bg-accent px-5 py-3.5 font-medium text-ink transition-colors hover:bg-paper"
+            className="btn-cta inline-flex w-fit items-center gap-2 bg-accent px-5 py-3.5 font-medium text-ink"
           >
             Cuéntame tu proceso
-            <span aria-hidden className="font-mono text-sm">→</span>
+            <span aria-hidden className="btn-arrow font-mono text-sm">→</span>
           </a>
         </aside>
       </div>
       </div>
     </section>
+  );
+}
+
+/** Fondo del hero: retícula fina que deriva y un flujo de proceso en ámbar que se dibuja. */
+function FondoHero() {
+  return (
+    <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+      <div className="hero-grid absolute inset-0" />
+      <svg className="absolute inset-x-0 bottom-0 h-[38%] w-full" viewBox="0 0 1200 200" preserveAspectRatio="xMidYMax slice">
+        <path
+          className="flow-path"
+          d="M -20 170 C 160 170 220 120 340 120 S 520 170 660 160 S 860 70 980 80 S 1140 30 1240 20"
+          fill="none"
+          stroke="#c47a2c"
+          strokeWidth="1.5"
+          pathLength={1}
+        />
+        {[
+          [340, 120],
+          [660, 160],
+          [980, 80],
+        ].map(([cx, cy], i) => (
+          <g key={i} className="flow-node" style={{ "--i": i } as CSSProperties}>
+            <circle cx={cx} cy={cy} r="9" fill="none" stroke="#c47a2c" strokeOpacity="0.35" />
+            <circle cx={cx} cy={cy} r="3.5" fill="#c47a2c" />
+          </g>
+        ))}
+      </svg>
+    </div>
   );
 }
 
@@ -251,20 +300,20 @@ function Metodo() {
 
         <Reveal>
           {/* Línea de proceso animada */}
-          <svg className="mb-10 hidden h-2 w-full sm:block" viewBox="0 0 1000 8" preserveAspectRatio="none" aria-hidden>
+          <div className="relative mb-10 hidden sm:block" aria-hidden>
+          <svg className="h-2 w-full" viewBox="0 0 1000 8" preserveAspectRatio="none">
             <line x1="0" y1="4" x2="1000" y2="4" stroke="rgb(247 244 236 / 0.15)" strokeWidth="2" />
-            <line
-              className="process-line"
-              x1="0"
-              y1="4"
-              x2="1000"
-              y2="4"
-              stroke="#c47a2c"
-              strokeWidth="2"
-              pathLength={1}
-            />
+            <line className="process-line" x1="0" y1="4" x2="1000" y2="4" stroke="#c47a2c" strokeWidth="2" pathLength={1} />
           </svg>
-          <ol className="grid gap-10 sm:grid-cols-3 sm:gap-8">
+          {[0, 1, 2].map((i) => (
+            <span
+              key={i}
+              className="process-dot absolute top-1/2 h-3 w-3 -translate-y-1/2 rounded-full border-2 border-accent bg-ink"
+              style={{ left: `calc(${(i * 100) / 3}% )`, "--i": i } as CSSProperties}
+            />
+          ))}
+          </div>
+          <ol className="stagger grid gap-10 sm:grid-cols-3 sm:gap-8">
             {METODO.map((m) => (
               <li key={m.paso}>
                 <p className="font-mono text-xs text-accent">{m.paso}</p>
@@ -297,7 +346,7 @@ function Proyectos() {
           <Reveal key={p.numero}>
             <article className="group/project">
               <div className="grid gap-8 md:grid-cols-12 md:gap-10">
-                <div className={`md:col-span-5 ${i % 2 === 1 ? "md:order-2" : ""}`}>
+                <div className={`stagger md:col-span-5 ${i % 2 === 1 ? "md:order-2" : ""}`}>
                   <div className="flex items-baseline gap-3">
                     <span className="font-mono text-xs text-accent-deep">{p.numero}</span>
                     <span className="font-mono text-xs text-muted">{p.etiqueta}</span>
@@ -311,7 +360,7 @@ function Proyectos() {
                       href={p.enlace.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-6 inline-flex items-center gap-2 border-b border-ink pb-0.5 text-ink transition-colors hover:border-accent hover:text-accent-deep"
+                      className="link-draw mt-6 inline-flex items-center gap-2 pb-1 text-ink"
                     >
                       {p.enlace.texto}
                       <span aria-hidden className="font-mono text-sm">↗</span>
@@ -320,7 +369,7 @@ function Proyectos() {
                     <p className="mt-6 text-sm text-muted">Sin enlace público · te muestro capturas del sistema</p>
                   )}
                 </div>
-                <div className={`md:col-span-7 ${i % 2 === 1 ? "md:order-1" : ""}`}>
+                <div className={`project-media md:col-span-7 ${i % 2 === 1 ? "md:order-1" : ""}`}>
                   <Galeria capturas={p.capturas} />
                 </div>
               </div>
@@ -350,7 +399,7 @@ function Galeria({ capturas }: { capturas: Captura[] }) {
 
 function Figura({ captura, className }: { captura: Captura; className: string }) {
   return (
-    <a href={captura.src} target="_blank" rel="noopener" className="block overflow-hidden border border-line bg-paper-2">
+    <a href={captura.src} target="_blank" rel="noopener" className="shot-frame block overflow-hidden border border-line bg-paper-2">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={captura.src}
