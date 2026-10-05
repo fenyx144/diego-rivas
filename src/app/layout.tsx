@@ -1,15 +1,29 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Newsreader } from "next/font/google";
+import { DM_Mono, Instrument_Serif, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 
-const geist = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
-const newsreader = Newsreader({ variable: "--font-newsreader", subsets: ["latin"], style: ["normal", "italic"] });
+// Serif con carácter para titulares; sans limpia para cuerpo; mono para etiquetas.
+const display = Instrument_Serif({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+});
+const sans = Source_Sans_3({
+  variable: "--font-sans-body",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
+const mono = DM_Mono({
+  variable: "--font-mono-body",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+});
 
-// Cambia SITE_URL en Vercel (variable NEXT_PUBLIC_SITE_URL) cuando tengas dominio propio.
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://diego-rivas.vercel.app";
-const titulo = "Diego Rivas — Desarrollador full-stack freelance";
-const descripcion = "Construyo webs y apps que convierten procesos en herramientas simples. Arequipa, Perú · trabajo remoto.";
+const titulo = "Diego Rivas Revilla — Desarrollo web, móvil e IA";
+const descripcion =
+  "Diseño y construyo webs, apps y automatizaciones que quitan trabajo manual. Arequipa, Perú · remoto.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -20,19 +34,19 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_PE",
     url: "/",
-    siteName: "Diego Rivas",
+    siteName: "Diego Rivas Revilla",
     title: titulo,
     description: descripcion,
-    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Diego Rivas — Desarrollador full-stack freelance" }],
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Diego Rivas Revilla" }],
   },
   twitter: { card: "summary_large_image", title: titulo, description: descripcion, images: ["/og.jpg"] },
 };
 
-export const viewport: Viewport = { themeColor: "#f6f4ef" };
+export const viewport: Viewport = { themeColor: "#f3efe6" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" className={`${geist.variable} ${geistMono.variable} ${newsreader.variable}`}>
+    <html lang="es" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
       <body>{children}</body>
     </html>
   );

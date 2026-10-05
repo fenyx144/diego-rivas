@@ -1,26 +1,70 @@
 @import "tailwindcss";
 
-/* Paleta propia: papel claro, tinta casi negra y un acento verde petróleo. */
+/*
+ * Identidad: papel cálido + tinta + un acento verde bosque.
+ * Sin degradados, sin glass, sin pastillas. Tipografía con carácter.
+ */
 @theme inline {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-sans: var(--font-sans-body), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-display), ui-serif, Georgia, "Times New Roman", serif;
+  --font-mono: var(--font-mono-body), ui-monospace, monospace;
 
-  --color-paper: #f6f4ef;
-  --color-ink: #171614;
-  --color-muted: #6b675f;
-  --color-line: #dcd7cc;
-  --color-accent: #24504b;
+  --color-paper: #f3efe6;
+  --color-paper-2: #ebe5d8;
+  --color-ink: #1a1916;
+  --color-muted: #5f5a50;
+  --color-line: #d4cdb8;
+  --color-accent: #1f5c45;
+  --color-accent-soft: #d8e6dd;
+  --color-ember: #b85a2a;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 body {
   @apply bg-paper font-sans text-ink antialiased;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 0% -10%, rgb(31 92 69 / 0.06), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgb(184 90 42 / 0.05), transparent 50%);
+  background-attachment: fixed;
 }
 
 ::selection {
-  @apply bg-accent text-paper;
+  background: var(--color-accent);
+  color: var(--color-paper);
+}
+
+/* Entrada suave al scrollear (respetando reduced-motion vía media query arriba). */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise {
+  animation: rise 0.55s ease-out both;
+}
+.rise-d1 { animation-delay: 0.08s; }
+.rise-d2 { animation-delay: 0.16s; }
+.rise-d3 { animation-delay: 0.24s; }
+
+/* Subrayado de acento que crece al hover */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1.5px;
+  transition: background-size 0.25s ease;
+}
+.link-underline:hover {
+  background-size: 100% 1.5px;
 }
