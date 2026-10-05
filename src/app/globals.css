@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+/* Paleta propia: papel claro, tinta casi negra y un acento verde petróleo. */
+@theme inline {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --color-paper: #f6f4ef;
+  --color-ink: #171614;
+  --color-muted: #6b675f;
+  --color-line: #dcd7cc;
+  --color-accent: #24504b;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-paper font-sans text-ink antialiased;
+}
+
+::selection {
+  @apply bg-accent text-paper;
+}
