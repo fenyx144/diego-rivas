@@ -42,11 +42,15 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: titulo, description: descripcion, images: ["/og.jpg"] },
 };
 
-export const viewport: Viewport = { themeColor: "#f7f4ec" };
+export const viewport: Viewport = { themeColor: "#0f1c2e" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
+    <html lang="es" className={`${display.variable} ${sans.variable} ${mono.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Activa las animaciones solo si hay JS: sin JS todo el contenido queda visible. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
       <body>{children}</body>
     </html>
   );

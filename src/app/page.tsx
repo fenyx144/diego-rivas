@@ -2,7 +2,6 @@
  * Página personal de Diego Rivas Revilla.
  * Contenido estático: presentación, servicios, método, proyectos, stack y contacto.
  */
-import Contador from "@/components/Contador";
 import Reveal from "@/components/Reveal";
 
 type Captura = { src: string; alt: string };
@@ -54,12 +53,6 @@ const METODO = [
     titulo: "Construir y acompañar",
     texto: "Entrego algo usable, te acompaño en la puesta en marcha y dejo el sistema listo para el día a día.",
   },
-];
-
-const RESULTADOS = [
-  { valor: 4, sufijo: "", etiqueta: "Productos propios en producción", detalle: "Cotizadores, paneles y un validador con IA" },
-  { valor: 3, sufijo: "", etiqueta: "Formas de ayudarte", detalle: "Web, móvil con Flutter y automatización" },
-  { valor: 2, sufijo: "", etiqueta: "Husos horarios que conecto", detalle: "América del Sur y Europa, en el mismo día" },
 ];
 
 const PROYECTOS: Proyecto[] = [
@@ -146,7 +139,6 @@ export default function Inicio() {
         <Hero />
         <Servicios />
         <Metodo />
-        <Resultados />
         <Proyectos />
         <Stack />
         <SobreMi />
@@ -159,17 +151,17 @@ export default function Inicio() {
 
 function Cabecera() {
   return (
-    <header className="sticky top-0 z-20 border-b border-line bg-paper">
+    <header className="sticky top-0 z-20 border-b border-paper/10 bg-ink text-paper">
       <div className="mx-auto flex max-w-[1120px] items-baseline justify-between px-5 py-4 sm:px-8">
-        <a href="#" className="font-serif text-[1.3rem] leading-none tracking-tight text-ink">
-          Diego Rivas <span className="text-muted">Revilla</span>
+        <a href="#" className="font-serif text-[1.3rem] leading-none tracking-tight text-paper">
+          Diego Rivas <span className="text-paper/55">Revilla</span>
         </a>
-        <nav className="hidden gap-7 text-[0.95rem] text-muted sm:flex">
-          <a href="#servicios" className="link-underline hover:text-ink">Servicios</a>
-          <a href="#proyectos" className="link-underline hover:text-ink">Proyectos</a>
-          <a href="#contacto" className="link-underline hover:text-ink">Contacto</a>
+        <nav className="hidden gap-7 text-[0.95rem] text-paper/65 sm:flex">
+          <a href="#servicios" className="link-underline hover:text-paper">Servicios</a>
+          <a href="#proyectos" className="link-underline hover:text-paper">Proyectos</a>
+          <a href="#contacto" className="link-underline hover:text-paper">Contacto</a>
         </nav>
-        <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="font-mono text-xs text-accent-deep link-underline">
+        <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="font-mono text-xs text-accent link-underline">
           WhatsApp
         </a>
       </div>
@@ -179,16 +171,17 @@ function Cabecera() {
 
 function Hero() {
   return (
-    <section className="mx-auto max-w-[1120px] px-5 pt-14 sm:px-8 sm:pt-20">
-      <div className="reveal-hero grid gap-10 border-b border-ink pb-14 sm:pb-20 md:grid-cols-12 md:gap-8">
+    <section className="bg-ink text-paper">
+      <div className="mx-auto max-w-[1120px] px-5 pt-14 sm:px-8 sm:pt-20">
+      <div className="reveal-hero grid gap-10 pb-16 sm:pb-24 md:grid-cols-12 md:gap-8">
         <div className="md:col-span-8">
-          <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-muted">
+          <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-paper/60">
             Diego Rivas Revilla · Arequipa, Perú · remoto
           </p>
-          <h1 className="mt-5 max-w-[22ch] font-serif text-[2.45rem] leading-[1.08] tracking-tight text-ink sm:text-[3.4rem]">
-            Desarrollo software que automatiza y simplifica la operación de tu negocio.
+          <h1 className="mt-5 max-w-[22ch] font-serif text-[2.45rem] leading-[1.08] tracking-tight text-paper sm:text-[3.4rem]">
+            Desarrollo software que automatiza y simplifica la operación de <span className="text-accent">tu negocio</span>.
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-paper/60 sm:text-xl">
             Construyo aplicaciones web, apps móviles con Flutter y automatizaciones con IA.
             El objetivo es concreto: menos trabajo a mano, menos errores y más tiempo para lo que
             de verdad mueve tu negocio.
@@ -196,20 +189,21 @@ function Hero() {
         </div>
         <aside className="flex flex-col justify-end gap-6 md:col-span-4">
           <div className="border-l-2 border-accent pl-4">
-            <p className="font-mono text-[0.7rem] uppercase tracking-wider text-muted">Ahora</p>
-            <p className="mt-2 leading-snug text-ink">
+            <p className="font-mono text-[0.7rem] uppercase tracking-wider text-paper/60">Ahora</p>
+            <p className="mt-2 leading-snug text-paper/90">
               Abierto a proyectos freelance. Trabajo desde Arequipa, en remoto, con horario que
               encaja con Europa.
             </p>
           </div>
           <a
             href="#contacto"
-            className="inline-flex w-fit items-center gap-2 bg-ink px-5 py-3.5 text-paper transition-colors hover:bg-ink-soft"
+            className="inline-flex w-fit items-center gap-2 bg-accent px-5 py-3.5 font-medium text-ink transition-colors hover:bg-paper"
           >
             Cuéntame tu proceso
-            <span aria-hidden className="font-mono text-sm text-accent">→</span>
+            <span aria-hidden className="font-mono text-sm">→</span>
           </a>
         </aside>
+      </div>
       </div>
     </section>
   );
@@ -280,24 +274,6 @@ function Metodo() {
             ))}
           </ol>
         </Reveal>
-      </div>
-    </section>
-  );
-}
-
-function Resultados() {
-  return (
-    <section className="border-b border-line bg-paper-2/70">
-      <div className="mx-auto grid max-w-[1120px] gap-8 px-5 py-14 sm:px-8 sm:grid-cols-3 sm:gap-6 sm:py-16">
-        {RESULTADOS.map((r, i) => (
-          <Reveal key={r.etiqueta} delay={(i + 1) as 1 | 2 | 3} className="border-l-2 border-accent pl-4 sm:border-l-0 sm:border-t-2 sm:border-accent sm:pl-0 sm:pt-4">
-            <p className="font-serif text-5xl tracking-tight text-ink sm:text-6xl">
-              <Contador valor={r.valor} sufijo={r.sufijo} />
-            </p>
-            <p className="mt-3 text-lg text-ink">{r.etiqueta}</p>
-            <p className="mt-1 text-sm text-muted">{r.detalle}</p>
-          </Reveal>
-        ))}
       </div>
     </section>
   );
