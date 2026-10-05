@@ -21,9 +21,9 @@ const mono = DM_Mono({
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://diego-rivas.vercel.app";
-const titulo = "Diego Rivas Revilla — Desarrollo web, móvil e IA";
+const titulo = "Diego Rivas Revilla — Desarrollo de software para negocios";
 const descripcion =
-  "Diseño y construyo webs, apps y automatizaciones que quitan trabajo manual. Arequipa, Perú · remoto.";
+  "Aplicaciones web, apps móviles con Flutter y automatizaciones con IA que reducen trabajo manual y errores. Arequipa, Perú · remoto.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: titulo, description: descripcion, images: ["/og.jpg"] },
 };
 
-export const viewport: Viewport = { themeColor: "#f3efe6" };
+export const viewport: Viewport = { themeColor: "#f7f4ec" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
