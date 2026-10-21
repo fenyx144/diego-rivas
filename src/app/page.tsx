@@ -142,7 +142,7 @@ const PROYECTOS: Proyecto[] = [
     descripcion: "Del primer correo del cliente al proyecto en ejecución.",
     detalle:
       "Clasifica los correos de clientes con IA, crea la oportunidad y la cotización en Odoo y, al ganarse, el proyecto con sus tareas. Los indicadores comerciales y operativos se publican en Metabase y en un tablero web.",
-    stack: ["n8n", "Odoo 18", "PostgreSQL", "Metabase", "Python"],
+    stack: ["n8n", "OpenAI", "Odoo 18", "PostgreSQL", "Metabase", "Python"],
     enlace: { href: "https://github.com/fenyx144/correo-proyecto", texto: "Ver el código" },
     capturas: [
       { src: "/proyectos/correo/01.webp", alt: "Arquitectura del flujo comercial" },
@@ -159,7 +159,7 @@ const STACK = [
   { area: "ERP", items: "Odoo: CRM, Ventas, Inventario, Proyectos, Contabilidad y módulos a medida" },
   { area: "Automatización", items: "n8n, webhooks, APIs REST, JSON-RPC" },
   { area: "Datos", items: "PostgreSQL, MySQL, Metabase" },
-  { area: "IA", items: "APIs de modelos de lenguaje (Gemini, Groq) con salida estructurada" },
+  { area: "IA", items: "APIs de modelos de lenguaje (OpenAI, Gemini, Groq) con salida estructurada" },
   { area: "Infraestructura", items: "Docker, Git, Vercel" },
 ];
 
