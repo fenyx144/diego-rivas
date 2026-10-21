@@ -34,7 +34,7 @@ const SERVICIOS = [
     n: "03",
     titulo: "Automatización e IA",
     texto:
-      "Flujos y agentes que clasifican información, arman documentos y hacen el seguimiento —siempre con una persona al mando.",
+      "Flujos en n8n e integraciones con Odoo que clasifican información, arman documentos y hacen el seguimiento —siempre con una persona al mando.",
   },
 ];
 
@@ -120,14 +120,47 @@ const PROYECTOS: Proyecto[] = [
       { src: "/proyectos/academia/landing-seccion.webp", alt: "Sección de la página pública" },
     ],
   },
+  {
+    numero: "05",
+    nombre: "Facturas a Odoo",
+    etiqueta: "Automatización contable",
+    descripcion: "Registro automático de facturas de proveedor en Odoo.",
+    detalle:
+      "Recibe comprobantes por formulario o Gmail, extrae los datos con IA, valida RUC, serie, IGV y totales según SUNAT, y registra la factura en Odoo con control de duplicados y alertas.",
+    stack: ["n8n", "Odoo 18", "Gemini", "JavaScript", "Docker"],
+    enlace: { href: "https://github.com/fenyx144/facturas-odoo", texto: "Ver el código" },
+    capturas: [
+      { src: "/proyectos/facturas/01.webp", alt: "Arquitectura del flujo de facturas" },
+      { src: "/proyectos/facturas/02.webp", alt: "Facturas de proveedor registradas en Odoo" },
+      { src: "/proyectos/facturas/03.webp", alt: "Detalle de una factura importada" },
+    ],
+  },
+  {
+    numero: "06",
+    nombre: "Del correo al proyecto",
+    etiqueta: "CRM, proyectos e indicadores",
+    descripcion: "Del primer correo del cliente al proyecto en ejecución.",
+    detalle:
+      "Clasifica los correos de clientes con IA, crea la oportunidad y la cotización en Odoo y, al ganarse, el proyecto con sus tareas. Los indicadores comerciales y operativos se publican en Metabase y en un tablero web.",
+    stack: ["n8n", "Odoo 18", "PostgreSQL", "Metabase", "Python"],
+    enlace: { href: "https://github.com/fenyx144/correo-proyecto", texto: "Ver el código" },
+    capturas: [
+      { src: "/proyectos/correo/01.webp", alt: "Arquitectura del flujo comercial" },
+      { src: "/proyectos/correo/02.webp", alt: "Reportes en Metabase" },
+      { src: "/proyectos/correo/03.webp", alt: "Tablero operativo" },
+    ],
+  },
 ];
 
 const STACK = [
   { area: "Web", items: "React, Next.js, TypeScript" },
   { area: "Móvil", items: "Flutter" },
-  { area: "Backend", items: "Python, PHP / Laravel" },
-  { area: "Datos", items: "PostgreSQL, MySQL" },
-  { area: "IA", items: "APIs de modelos de lenguaje y automatización de flujos" },
+  { area: "Backend", items: "Python, PHP / Laravel, JavaScript" },
+  { area: "ERP", items: "Odoo: CRM, Ventas, Inventario, Proyectos, Contabilidad y módulos a medida" },
+  { area: "Automatización", items: "n8n, webhooks, APIs REST, JSON-RPC" },
+  { area: "Datos", items: "PostgreSQL, MySQL, Metabase" },
+  { area: "IA", items: "APIs de modelos de lenguaje (Gemini, Groq) con salida estructurada" },
+  { area: "Infraestructura", items: "Docker, Git, Vercel" },
 ];
 
 const WHATSAPP = "https://wa.me/51955140263";
